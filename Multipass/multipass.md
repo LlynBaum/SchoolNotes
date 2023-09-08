@@ -2,7 +2,7 @@
 
 Command and other things about Multipass
 
-## Start VM
+## Commands
 
 | Befehlt | Beschreibung |   
 | :------ | :---------- |
