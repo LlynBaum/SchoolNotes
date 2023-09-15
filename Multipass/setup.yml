@@ -1,0 +1,14 @@
+# upgrade system
+package_update: true
+package_upgrade: true
+
+# install needed packages
+packages:
+  - openjdk-17-jdk
+  - maven
+
+#runs commands, but only first boot
+runcmd:
+  - sudo su - ubuntu -c "git clone https://gitlab.com/bbwrl/m346-ref-card-01.git"
+  - sudo su - ubuntu -c "cd m347-ref-card-01 && mvn package"
+  - sudo su -ubuntu -c "java -jar m346-ref-card-01/target/architecture-refcard-01-0.0.1-SNAPSHOT.jar &"
