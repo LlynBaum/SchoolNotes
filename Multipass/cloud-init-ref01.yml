@@ -11,4 +11,4 @@ packages:
 runcmd:
   - sudo su - ubuntu -c "git clone https://gitlab.com/bbwrl/m346-ref-card-01.git"
   - sudo su - ubuntu -c "cd m347-ref-card-01 && mvn package"
-  - sudo su - ubuntu -c "java -jar target/architecture-refcard-01-0.0.1-SNAPSHOT.jar"
+  - sudo su - ubuntu -c "java -jar target/architecture-refcard-01-0.0.1-SNAPSHOT.jar &"
