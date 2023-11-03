@@ -1,0 +1,23 @@
+#cloud-config
+users:
+  - default
+  - name: llyn
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCt0QB0uhmGHhm+KrUI/mZNRkvh47Cy5x9ubOnz2dORHr54aRzdkLu3ZJlRDfdq6eCQJZGWrRZVe3DaLN2C9vl+W/HHczPuX/tvUmhnGFSKDurDoaBZQJLpjn1FX7QOqmbnu75KbparTDpSedmPRfT7ISZMAhANEchlpgv0/6YKlPiLlqFLAH7qf2rystSE1MzHbYiPvIrOW3dBbLL4/+baAbcDrYvsPM7a4hx1uYQzoEuOAiieemTuO8uJxu3Htz4BFxOSY77sixDuKVA4fG+wq77r0gs9Wyw1qk6JE+oHWA7p/G1NFu09fmRE0k2LM2D1yvcOFmXmrCI/yWtKK+ZNkrQPhwmzHQZvNIw5XrKF4E39974gWjPT7iDLRGwF5h+jZAsqAsKbc5Q0jDvkhKwYdHYXK2pGg8tuaTvSeHFTUMWswQombFJOkLB/OIPeBneCdiqKm861IimxqaU9PZsc79iY2OKnx/T94TvnC92ZsYUc3pI1yWEvLqsFUqKgTFU= llyn@Llyn
+ 
+ # upgrade system
+package_update: true
+package_upgrade: false
+
+# install needed packages
+packages:
+  - openjdk-11-jdk
+  - maven
+
+#runs commands, but only first boot
+runcmd:
+  - sudo su - ubuntu -c "git clone https://gitlab.com/bbwrl/m346-ref-card-01.git"
+  - sudo su - ubuntu -c "cd m346-ref-card-01 && mvn package"
+  - sudo su - ubuntu -c "java -jar m346-ref-card-01/target/architecture-refcard-01-0.0.1-SNAPSHOT.jar &"
