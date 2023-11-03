@@ -1,0 +1,2 @@
+[web]
+one-filly ansible_host=192.168.67.199 ansible_user=llyn
